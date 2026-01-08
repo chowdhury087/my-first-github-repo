@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Please Wait...</title>
+
+    <style>
+        body {
+            background: black;
+            color: #00ff00;
+            font-family: monospace;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #text {
+            margin-top: 120px;
+            font-size: 24px;
+            padding: 20px;
+        }
+
+        button {
+            font-size: 22px;
+            padding: 12px 35px;
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        #no {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+
+<audio id="bgSound" autoplay loop>
+    <source src="/sound.mp3" type="audio/mpeg">
+</audio>
+
+<div id="text"></div>
+
+<button onclick="yesClick()">YES</button>
+<button id="no">NO</button>
+
+<script>
+/* ========= BACKGROUND SOUND ========= */
+let sound = document.getElementById("bgSound");
+sound.volume = 0.2;
+
+/* ========= TYPING TEXT ========= */
+let message = "I LIKE YOU.DO YOU LIKE ME"
+let i = 0;
+
+function typeText() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeText, 70);
+    }
+}
+typeText();
+
+/* ========= NO BUTTON NEVER CLICKABLE ========= */
+let noBtn = document.getElementById("no");
+
+noBtn.addEventListener("mousedown", function (e) {
+    e.preventDefault();
+
+    let x = Math.random() * (window.innerWidth - 140);
+    let y = Math.random() * (window.innerHeight - 80);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+/* ========= YES BUTTON ========= */
+function yesClick() {
+    sound.volume = 1.0;
+    document.body.innerHTML = `
+        <h1 style="color:lime; margin-top:150px;">
+        THANKS
+        <br>
+        <br>
+        FOR ACCEPTING
+        
+        </h1>
+    `;
+}
+</script>
+
+</body>
+</html>
