@@ -34,7 +34,7 @@
 <body>
 
 <audio id="bgSound" autoplay loop>
-    <source src="/sound.mp3" type="audio/mpeg">
+    <source src="ff.mp3" type="audio/mpeg">
 </audio>
 
 <div id="text"></div>
@@ -43,11 +43,10 @@
 <button id="no">NO</button>
 
 <script>
-/* ========= BACKGROUND SOUND ========= */
+
 let sound = document.getElementById("bgSound");
 sound.volume = 0.2;
 
-/* ========= TYPING TEXT ========= */
 let message = "I LIKE YOU.DO YOU LIKE ME"
 let i = 0;
 
@@ -60,7 +59,6 @@ function typeText() {
 }
 typeText();
 
-/* ========= NO BUTTON NEVER CLICKABLE ========= */
 let noBtn = document.getElementById("no");
 
 noBtn.addEventListener("mousedown", function (e) {
@@ -73,7 +71,6 @@ noBtn.addEventListener("mousedown", function (e) {
     noBtn.style.top = y + "px";
 });
 
-/* ========= YES BUTTON ========= */
 function yesClick() {
     sound.volume = 1.0;
     document.body.innerHTML = `
